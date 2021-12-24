@@ -155,10 +155,14 @@
     AVPlayerItem *playerItem = (AVPlayerItem *)object;
     if ([keyPath isEqualToString:@"status"])
     {
-         if ([playerItem status] == AVPlayerStatusReadyToPlay)
+         if ([playerItem status] == AVPlayerItemStatusReadyToPlay)
          {
              [self.activityView stopAnimating];
              CGRect rect = self.playerLayer.videoRect;
+//             NSLog(@"self.playerLayer.videoRect:%@",NSStringFromCGRect(rect));
+         }else  if ([playerItem status] == AVPlayerItemStatusFailed)
+         {
+             [self.activityView stopAnimating];
 //             NSLog(@"self.playerLayer.videoRect:%@",NSStringFromCGRect(rect));
          }
     }
